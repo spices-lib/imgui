@@ -606,7 +606,7 @@ void ImGui_ImplVulkan_RenderDrawData(ImDrawData* draw_data, VkCommandBuffer comm
                 if (pcmd->UserCallback == ImDrawCallback_ResetRenderState)
                     ImGui_ImplVulkan_SetupRenderState(draw_data, pipeline, command_buffer, rb, fb_width, fb_height);
                 else
-                    pcmd->UserCallback(draw_list, pcmd);
+                    pcmd->UserCallback(draw_list, pcmd, global_idx_offset, global_vtx_offset);
             }
             else
             {

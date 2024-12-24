@@ -495,10 +495,12 @@ void ImDrawList::AddCallback(ImDrawCallback callback, void* userdata, size_t use
     IM_ASSERT_PARANOID(CmdBuffer.Size > 0);
     ImDrawCmd* curr_cmd = &CmdBuffer.Data[CmdBuffer.Size - 1];
     IM_ASSERT(curr_cmd->UserCallback == NULL);
-    if (curr_cmd->ElemCount != 0)
+    int elementCount = curr_cmd->ElemCount;
+    if (elementCount != 0)
     {
         AddDrawCmd();
         curr_cmd = &CmdBuffer.Data[CmdBuffer.Size - 1];
+        curr_cmd->ElemCount = elementCount;
     }
 
     curr_cmd->UserCallback = callback;
