@@ -85,3 +85,14 @@ examples/example_sdl3_opengl3/example_sdl3_opengl3
 examples/example_sdl3_sdlgpu3/example_sdl3_sdlgpu3
 examples/example_sdl3_sdlrenderer3/example_sdl3_sdlrenderer3
 examples/example_sdl3_vulkan/example_sdl3_vulkan
+
+bin/
+bin-int/
+*.vcxproj
+*.vcxproj.filters
+
+Makefile
+ImGui_Direct3D11.make
+ImGui_Direct3D12.make
+ImGui_OpenGL.make
+ImGui_Vulkan.make

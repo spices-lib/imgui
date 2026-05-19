@@ -1117,6 +1117,14 @@ static void ImGui_ImplVulkan_CreateDescriptorSetLayout(VkDescriptorSetLayout* p_
     ImGui_ImplVulkan_Data* bd = ImGui_ImplVulkan_GetBackendData();
     ImGui_ImplVulkan_InitInfo* v = &bd->VulkanInitInfo;
 
+    VkDescriptorBindingFlags flag{};
+    flag = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT | VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT;
+    VkDescriptorSetLayoutBindingFlagsCreateInfo bindingFlags{};
+    bindingFlags.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO;
+    bindingFlags.pNext = nullptr;
+    bindingFlags.pBindingFlags = &flag;
+    bindingFlags.bindingCount = 1;
+
     VkDescriptorSetLayoutBinding binding[1] = {};
     binding[0].descriptorType = descriptor_type;
     binding[0].descriptorCount = 1;
@@ -1125,6 +1133,8 @@ static void ImGui_ImplVulkan_CreateDescriptorSetLayout(VkDescriptorSetLayout* p_
     info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
     info.bindingCount = 1;
     info.pBindings = binding;
+    info.flags = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT;
+    info.pNext = &bindingFlags;
     VkResult err = vkCreateDescriptorSetLayout(v->Device, &info, v->Allocator, p_layout);
     check_vk_result(err);
 }
