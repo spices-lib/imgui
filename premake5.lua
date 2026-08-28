@@ -96,7 +96,7 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_METAL") then
 end
 
 -- Project ImGui
-solution.DefineCStaticLibrary("ImGui", function()
+solution.DefineCppStaticLibrary("ImGui", function()
 
 	systemversion "latest"
 
