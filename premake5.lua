@@ -57,7 +57,7 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_VULKAN") then
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
-	table.insert(external_include_dirs, vendor.Vulkan.includes)
+	table.insert(external_include_dirs, vendor.Vulkan_Headers.includes)
 
 end
 
