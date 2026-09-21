@@ -26,6 +26,10 @@ local include_dirs = {
 local external_include_dirs = {
 }
 
+local macro_defines = {
+	"GLFW_INCLUDE_NONE",
+}
+
 if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_WEBGPU") then
 
 	table.insert(sources, "backends/imgui_impl_wgpu.h")
@@ -58,6 +62,9 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_VULKAN") then
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
 	table.insert(external_include_dirs, vendor.Vulkan_Headers.includes)
+	table.insert(external_include_dirs, vendor.volk.includes)
+
+	table.insert(macro_defines, "IMGUI_IMPL_VULKAN_USE_VOLK")
 
 end
 
@@ -93,6 +100,8 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_METAL") then
 	table.insert(external_include_dirs, vendor.GLFW.includes)
 	table.insert(external_include_dirs, vendor.metal_cpp.includes)
 
+	table.insert(macro_defines, "IMGUI_IMPL_METAL_CPP")
+
 end
 
 -- Project ImGui
@@ -102,19 +111,11 @@ solution.DefineCppStaticLibrary("ImGui", function()
 
 	files(sources)
 
-	defines
-	{
-		"GLFW_INCLUDE_NONE"
-	}
+	defines(macro_defines)
 
 	includedirs(include_dirs)
-	externalincludedirs(external_include_dirs)
 
-	filter "system:macosx"
-		defines
-		{
-			"IMGUI_IMPL_METAL_CPP"
-		}
+	externalincludedirs(external_include_dirs)
 
 	filter "configurations:Debug"
 		runtime "Debug"

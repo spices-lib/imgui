@@ -96,3 +96,4 @@ ImGui_Direct3D11.make
 ImGui_Direct3D12.make
 ImGui_OpenGL.make
 ImGui_Vulkan.make
+*.Android.mk
