@@ -2025,7 +2025,7 @@ void ImGui_ImplVulkanH_CreateOrResizeWindow(VkInstance instance, VkPhysicalDevic
         barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
         barrier.image = wd->Frames[i].Backbuffer;
         barrier.oldLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-        barrier.newLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+        barrier.newLayout = VK_IMAGE_LAYOUT_UNDEFINED;
         barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
         barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
         barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
@@ -2290,7 +2290,7 @@ static void ImGui_ImplVulkan_RenderWindow(ImGuiViewport* viewport, void*)
             VkImageMemoryBarrier barrier = {};
             barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
             barrier.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-            barrier.oldLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+            barrier.oldLayout = VK_IMAGE_LAYOUT_UNDEFINED;
             barrier.newLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
             barrier.image = fd->Backbuffer;
             barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
