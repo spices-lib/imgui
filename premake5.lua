@@ -107,8 +107,6 @@ end
 -- Project ImGui
 solution.DefineCppStaticLibrary("ImGui", function()
 
-	systemversion "latest"
-
 	files(sources)
 
 	defines(macro_defines)
