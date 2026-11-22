@@ -36,9 +36,12 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_WEBGPU") then
 	table.insert(sources, "backends/imgui_impl_wgpu.cpp")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.emscripten_glfw.includes)
 	table.insert(external_include_dirs, vendor.emdawnwebgpu.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 
 end
 
@@ -48,8 +51,11 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_OPENGL") then
 	table.insert(sources, "backends/imgui_impl_opengl3.cpp")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 
 end
 
@@ -59,8 +65,11 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_VULKAN") then
 	table.insert(sources, "backends/imgui_impl_vulkan.cpp")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 	table.insert(external_include_dirs, vendor.Vulkan_Headers.includes)
 	table.insert(external_include_dirs, vendor.volk.includes)
 
@@ -74,8 +83,11 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_DIRECT3D11") then
 	table.insert(sources, "backends/imgui_impl_dx11.cpp")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 
 end
 
@@ -85,8 +97,11 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_DIRECT3D12") then
 	table.insert(sources, "backends/imgui_impl_dx12.cpp")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 
 end
 
@@ -96,8 +111,11 @@ if table.contains(platform.GetGraphicsFeatures(), "NP_GRAPHICS_METAL") then
 	table.insert(sources, "backends/imgui_impl_metal.mm")
 	table.insert(sources, "backends/imgui_impl_glfw.h")
 	table.insert(sources, "backends/imgui_impl_glfw.cpp")
+	table.insert(sources, "backends/imgui_impl_sdl3.h")
+	table.insert(sources, "backends/imgui_impl_sdl3.cpp")
 
 	table.insert(external_include_dirs, vendor.GLFW.includes)
+	table.insert(external_include_dirs, vendor.SDL.includes)
 	table.insert(external_include_dirs, vendor.metal_cpp.includes)
 
 	table.insert(macro_defines, "IMGUI_IMPL_METAL_CPP")
